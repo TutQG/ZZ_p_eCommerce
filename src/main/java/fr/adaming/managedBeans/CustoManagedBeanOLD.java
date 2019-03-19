@@ -12,7 +12,7 @@ import fr.adaming.service.ICustoService;
 @ManagedBean(name = "cuMB")
 @RequestScoped
 
-public class CustoManagedBean {
+public class CustoManagedBeanOLD {
 
 	// uml en java
 	@EJB
@@ -21,7 +21,7 @@ public class CustoManagedBean {
 	private Customer custo;
 
 	// CONSTRUCTEUR VIDE
-	public CustoManagedBean() {
+	public CustoManagedBeanOLD() {
 		this.custo = new Customer();
 	}
 

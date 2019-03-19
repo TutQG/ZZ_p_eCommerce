@@ -2,11 +2,8 @@ package fr.adaming.dao;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import fr.adaming.entities.Category;
 
-@Local
 public interface ICategoryDao {
 
 	public List<Category> getAllCat(Category cat);

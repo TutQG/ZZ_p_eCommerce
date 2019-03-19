@@ -22,7 +22,7 @@ import fr.adaming.service.IProductService;
 @ManagedBean(name = "adMB")
 @RequestScoped
 
-public class AdminManagedBean {
+public class AdminManagedBeanOLD {
 
 	// uml en java
 	@EJB
@@ -45,7 +45,7 @@ public class AdminManagedBean {
 	private Product pdt;
 
 	// CONSTRUCTEUR VIDE
-	public AdminManagedBean() {
+	public AdminManagedBeanOLD() {
 		this.admin = new Administrator();
 		this.cat = new Category();
 		this.pdt = new Product();

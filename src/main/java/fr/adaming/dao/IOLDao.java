@@ -2,12 +2,9 @@ package fr.adaming.dao;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import fr.adaming.entities.OrderLine;
 import fr.adaming.entities.Product;
 
-@Local
 public interface IOLDao {
 
 	public double price(OrderLine ol, Product pdt);

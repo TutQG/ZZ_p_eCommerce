@@ -2,11 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import fr.adaming.entities.Product;
-
-@Local
 
 public interface IProductService {
 	public List<Product> getAllPdt(Product pdt);

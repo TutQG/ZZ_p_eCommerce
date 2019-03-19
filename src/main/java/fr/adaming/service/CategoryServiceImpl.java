@@ -2,40 +2,32 @@ package fr.adaming.service;
 
 import java.util.List;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateful;
-
-import fr.adaming.dao.ICategoryDao;
 import fr.adaming.entities.Category;
 
-@Stateful
-
 public class CategoryServiceImpl implements ICategoryService {
-	@EJB
-	ICategoryDao catDao;
 
 	@Override
 	public List<Category> getAllCat(Category cat) {
 		// TODO Auto-generated method stub
-		return catDao.getAllCat(cat);
+		return null;
 	}
 
 	@Override
 	public Category addCat(Category cat) {
 		// TODO Auto-generated method stub
-		return catDao.addCat(cat);
+		return null;
 	}
 
 	@Override
 	public int updateCat(Category cat) {
 		// TODO Auto-generated method stub
-		return catDao.updateCat(cat);
+		return 0;
 	}
 
 	@Override
 	public int deleteCat(Category cat) {
 		// TODO Auto-generated method stub
-		return catDao.deleteCat(cat);
+		return 0;
 	}
 
 	@Override
