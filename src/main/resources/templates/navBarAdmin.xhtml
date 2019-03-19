@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form>
+		<b:navBar fluid="true" inverse="true" fixed="top" sticky="true">
+			<b:navbarLinks pull="left">
+
+				<h:graphicImage value="ressources/images/chopper (3).png"
+					href="homePage" />
+			</b:navbarLinks>
+			<b:navbarLinks>
+				<b:navLink value="Home Page" href="homeAdmin.xhtml" iconAwesome="home"></b:navLink>
+
+				<b:dropMenu value="Categories" iconAwesome="th-list">
+					<b:navLink value="Add" href="addCat.xhtml"></b:navLink>
+					<b:navLink value="Update" href="updateCat.xhtml"></b:navLink>
+					<b:navLink value="Delete" href="delCat.xhtml"></b:navLink>
+					<b:navLink></b:navLink>
+					<b:navLink value="Display" href="catDisplay.xhtml"></b:navLink>
+				
+					
+				</b:dropMenu>
+				
+				<b:dropMenu value="Product" iconAwesome="th-list">
+					<b:navLink value="Add" href="addPdt.xhtml"></b:navLink>
+					<b:navLink value="Update" href="updatePdt.xhtml"></b:navLink>
+					<b:navLink value="Delete" href="delPdt.xhtml"></b:navLink>
+					<b:navLink></b:navLink>
+					<b:navLink value="Display" href="pdtDisplay.xhtml"></b:navLink>
+					
+					
+				</b:dropMenu>
+			
+			</b:navbarLinks>
+
+			<!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+			<b:navbarLinks pull="right">
+			
+
+				<b:navLink value="Log Out" href="login.xhtml" iconAwesome="power-off"></b:navLink>
+				
+			</b:navbarLinks>
+
+		</b:navBar>
+	</h:form>
+</h:body>
+</h:html>
