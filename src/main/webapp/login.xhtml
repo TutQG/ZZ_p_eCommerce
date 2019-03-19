@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>LogIn Page</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<h:outputStylesheet library="css" name="myStyle.css" />
+	<div class="p-grid p-align-center vertical-container">
+
+		<div style="margin-left: 1vw">
+			<h:graphicImage value="ressources/images/admin.png"
+				style="height:20vw; width:auto"/>
+			<h:graphicImage value="ressources/images/chopper - Cercle.png"
+				style="height:8vw; width:auto" />
+			<h:graphicImage value="ressources/images/users.png"
+			style="height:20vw; width:auto"/>
+			
+			
+			<h:form>
+			Login :
+			<h:inputText value="#{adMB.admin.mail}" />
+				<br /> 
+			Password :
+			<h:inputSecret value="#{adMB.admin.pwd}" />
+				<br />
+				<h:commandButton value="Se Connecter" action="#{adMB.connect}"></h:commandButton>
+			</h:form>
+		</div>
+
+		<div>
+			
+		</div>
+		
+		<form>
+			Login :
+			<h:inputText value="#{cuMB.custo.mail}" />
+			<br /> Password :
+			<h:inputSecret value="#{cuMB.custo.pwd}" />
+			<br />
+			<h:commandButton value="Se Connecter" action="#{cuMB.connect}"></h:commandButton>
+		</form>
+		<form>
+			Name :
+			<h:inputText value="#{cuMB.custo.name}" />
+			<br /> Surname :
+			<h:inputText value="#{cuMB.custo.surname}" />
+			<br /> Mail :
+			<h:inputText value="#{cuMB.custo.mail}" />
+			<br /> Phone Number :
+			<h:inputText value="#{cuMB.custo.phoneNumber}" />
+			<br /> Password :
+			<h:inputSecret value="#{cuMB.custo.pwd}" />
+			<br />
+
+			<h:commandButton value="Submit" action="#{cuMB.addCustomer}"></h:commandButton>
+		</form>
+
+	</div>
+
+	
+</body>
+</html>

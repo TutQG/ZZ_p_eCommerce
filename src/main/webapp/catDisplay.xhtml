@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+
+	<title>Categories List</title>
+
+</h:head>
+<h:body>
+	<div>
+		<ui:insert>
+			<ui:include src="/ressources/templates/navBarAdmin.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+	<br />
+	<div style="margin: 40px">
+		<h:form>
+			<p:dataTable var="cat" value="#{sessionScope.lCatSession}">
+				<p:column headerText="Id">
+					<h:outputText value="#{cat.id}" />
+				</p:column>
+				<p:column headerText="Name">
+					<h:outputText value="#{cat.name}" />
+				</p:column>
+							<p:column headerText="Picture">
+								<h:graphicImage value="#{cat.img}" />
+							</p:column>
+				<p:column headerText="Description">
+					<h:outputText value="#{cat.description}" />
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</div>
+</h:body>
+</h:html>
+

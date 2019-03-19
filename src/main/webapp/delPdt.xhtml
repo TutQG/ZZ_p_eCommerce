@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+
+	<title>Remove Products</title>
+
+</h:head>
+<h:body>
+	<div>
+		<ui:insert>
+			<ui:include src="/ressources/templates/navBarAdmin.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+	<br />
+	<div style="margin: 75px">
+
+		<h:form>
+			<h:panelGrid columns="2">
+			Id : <h:inputText value="#{adMB.pdt.id}" />
+				<h:commandButton value="Delete" action="#{adMB.delPdt}" />
+			</h:panelGrid>
+		</h:form>
+
+	</div>
+
+</h:body>
+</h:html>

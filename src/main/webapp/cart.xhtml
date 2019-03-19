@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+
+	<title>Insert title here</title>
+
+</h:head>
+<h:body>
+	<ui:insert>
+		<ui:include src="/ressources/templates/navBar.xhtml"></ui:include>
+	</ui:insert>
+
+	<h:form>
+
+Order N° : 
+
+			<p:dataTable var="cart" value="#{sessionScope.lPdtSession}">
+			<p:column headerText="Designation">
+				<h:outputText value="#{cart.designation}" />
+			</p:column>
+			<p:column headerText="Unit Price (€)">
+				<h:outputText value="#{cart.price}" />
+			</p:column>
+			<p:column headerText="Quantity">
+			<p:button>Plus</p:button>
+				<h:outputText value="#{cart.quantity}" />
+				<p:button>Minus</p:button>
+			</p:column>
+			<p:column headerText="Total Price">
+				<h:outputText value="#{pdt.totalPrice}" />
+			
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+
+
+
+</h:body>
+</h:html>
