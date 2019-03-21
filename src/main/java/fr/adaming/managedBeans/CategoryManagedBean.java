@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -17,30 +16,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.adaming.entities.Administrator;
 import fr.adaming.entities.Category;
 import fr.adaming.entities.Product;
-import fr.adaming.service.IProductService;
+import fr.adaming.service.ICategoryService;
 
-@ManagedBean(name = "pdtMB")
+@ManagedBean(name = "catMB")
 @RequestScoped
-public class ProductManagedBean implements Serializable {
-
+public class CategoryManagedBean implements Serializable{
+	
 	// uml en java
-	@ManagedProperty(value = "#{pdtService}")
-	private IProductService pdtService;
-
-	private Product pdt;
-
+	private ICategoryService catService;
+	
+	private Category category;
 	private Administrator admin;
-
-	private Category cat;
-
+	private Product produit;
+	
 	private HttpSession mySession;
-
-	private Product product;
-
-	public ProductManagedBean() {
-		this.product = new Product();
+	
+	public CategoryManagedBean() {
+		this.category = new Category();
 	}
-
+	
 	@Autowired
 	private SessionFactory sf;
 
@@ -53,71 +47,68 @@ public class ProductManagedBean implements Serializable {
 
 	}
 
-	// le setter est obligatoire pour l'injection de dépendance via
-	// @ManagedProperty
-	public void setPdtService(IProductService pdtService) {
-		this.pdtService = pdtService;
+	public void setCatService(ICategoryService catService) {
+		this.catService = catService;
 	}
 
-	public Product getProduct() {
-		return product;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
+	
+	public String addCat() {
+		Category catAjout = catService.addCat(category);
 
-	public String addPdt() {
-		Product pdtAjout = pdtService.addPdt(product);
-
-		if (pdtAjout.getId() != 0) {
+		if (catAjout.getId() != 0) {
 			// récupérer la nouvelle liste
 			// La liste des étu de ce formateur
-			List<Product> pdtListe = pdtService.getAllPdt(pdt);
+			List<Category> catListe = catService.getAllCat(category);
 
 			// Mettre la liste dans la session
-			mySession.setAttribute("lSession", pdtListe);
+			mySession.setAttribute("lSession", catListe);
 
 			return "homeAdmin";
 
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout a échoué"));
-			return "addPdt";
+			return "addCat";
 		}
 	}
+	
+	public String updateCat() {
 
-	public String updatePdt() {
+		int catModif = catService.updateCat(category);
 
-		int pdtModif = pdtService.updatePdt(pdt);
-
-		if (pdtModif != 0) {
-			List<Product> liste = pdtService.getAllPdt(pdt);
+		if (catModif != 0) {
+			List<Category> liste = catService.getAllCat(category);
 
 			mySession.setAttribute("lSession", liste);
 
 			return "homeAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La modification a échoué"));
-			return "updatePdt";
+			return "updateCat";
 		}
 
 	}
-	
-	public String deletePdt(){
-		int pdtModif =pdtService.delPdt(pdt);
+
+	public String deleteCat(){
+		int catModif =catService.deleteCat(category);
 				
-				if (pdtModif !=0){
+				if (catModif !=0){
 					
-					List<Product> pdtListe=pdtService.getAllPdt(pdt);
+					List<Category> catListe=catService.getAllCat(category),;
 					
-					mySession.setAttribute("lSession", pdtListe);
+					mySession.setAttribute("lSession", catListe);
 					
 					return "homeAdmin";
 				}else{
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression a échoué"));
-					return "delPdt";
+					return "delCat";
 				}
 			}
-	
 	
 }
