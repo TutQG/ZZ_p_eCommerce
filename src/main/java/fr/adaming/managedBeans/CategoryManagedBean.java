@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -23,6 +24,7 @@ import fr.adaming.service.ICategoryService;
 public class CategoryManagedBean implements Serializable{
 	
 	// uml en java
+	@ManagedProperty(value = "#{catService}")
 	private ICategoryService catService;
 	
 	private Category category;
@@ -49,6 +51,11 @@ public class CategoryManagedBean implements Serializable{
 
 	public void setCatService(ICategoryService catService) {
 		this.catService = catService;
+	}
+
+
+	public void setSf(SessionFactory sf) {
+		this.sf = sf;
 	}
 
 	public Category getCategory() {

@@ -68,6 +68,11 @@ public class ProductManagedBean implements Serializable {
 		this.product = product;
 	}
 
+
+	public void setSf(SessionFactory sf) {
+		this.sf = sf;
+	}
+
 	public String addPdt() {
 		Product pdtAjout = pdtService.addPdt(product);
 

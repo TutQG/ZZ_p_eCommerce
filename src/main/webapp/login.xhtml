@@ -2,19 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<head>
+<h:head>
 <title>LogIn Page</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-<body>
+</h:head>
+<h:body>
 	<h:outputStylesheet library="css" name="myStyle.css" />
 	<div class="p-grid p-align-center vertical-container">
 
 		<div style="margin-left: 1vw">
-			<h:graphicImage value="resources/images/admin.png"
-				style="height:20vw; width:auto"/>
+			<h:graphicImage library="images" name="admin.png"/>
 			<h:graphicImage value="resources/images/chopper - Cercle.png"
 				style="height:8vw; width:auto" />
 			<h:graphicImage value="resources/images/users.png"
@@ -63,5 +62,5 @@
 	</div>
 
 	
-</body>
+</h:body>
 </html>
