@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.adaming.entities.Administrator;
 import fr.adaming.entities.Category;
 import fr.adaming.entities.Product;
+import fr.adaming.entities.SendMailSSL;
 import fr.adaming.service.IProductService;
 
 @ManagedBean(name = "pdtMB")
@@ -70,16 +71,41 @@ public class ProductManagedBean implements Serializable {
 	public String addPdt() {
 		Product pdtAjout = pdtService.addPdt(product);
 
+		
+		String messageMail;
+
+		messageMail = "Bonjour, \n Nous vous informons que nous avons ajouté un nouveau produit \n Cordialement, \n Guillaume et Arthur";
+
+		int verifMail = 0;
+		
 		if (pdtAjout.getId() != 0) {
-			// récupérer la nouvelle liste
-			// La liste des étu de ce formateur
-			List<Product> pdtListe = pdtService.getAllPdt(pdt);
+			
 
-			// Mettre la liste dans la session
-			mySession.setAttribute("lSession", pdtListe);
+			SendMailSSL sm = new SendMailSSL();
+			try {
+				// Vérif va servir à savoir si le mail est envoyé vu que la
+				// fonction sendmail retourne un int
+				verifMail = sm.sendMail("arthur.quillent@gmail.com", messageMail);
 
-			return "homeAdmin";
+			} catch (Exception e) {
 
+				e.printStackTrace();
+			}
+
+			if (verifMail != 0) {
+				// récupérer la nouvelle liste
+				// La liste des étu de ce formateur
+				List<Product> pdtListe = pdtService.getAllPdt(pdt);
+
+				// Mettre la liste dans la session
+				mySession.setAttribute("lSession", pdtListe);
+				return "homeAdmin";
+
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produit ajouté mais mail non envoyé"));
+				return "homeAdmin";
+			}
+			
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout a échoué"));
 			return "addPdt";
@@ -102,22 +128,21 @@ public class ProductManagedBean implements Serializable {
 		}
 
 	}
-	
-	public String deletePdt(){
-		int pdtModif =pdtService.delPdt(pdt);
-				
-				if (pdtModif !=0){
-					
-					List<Product> pdtListe=pdtService.getAllPdt(pdt);
-					
-					mySession.setAttribute("lSession", pdtListe);
-					
-					return "homeAdmin";
-				}else{
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression a échoué"));
-					return "delPdt";
-				}
-			}
-	
-	
+
+	public String deletePdt() {
+		int pdtModif = pdtService.delPdt(pdt);
+
+		if (pdtModif != 0) {
+
+			List<Product> pdtListe = pdtService.getAllPdt(pdt);
+
+			mySession.setAttribute("lSession", pdtListe);
+
+			return "homeAdmin";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression a échoué"));
+			return "delPdt";
+		}
+	}
+
 }

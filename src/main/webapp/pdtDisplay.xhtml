@@ -16,32 +16,7 @@
 	</div>
 	<br />
 
-	<div style="margin: 40px">
-		<h:form>
-
-			<p:dataTable var="pdt" value="#{sessionScope.lPdtSession}">
-				<p:column headerText="Id">
-					<h:outputText value="#{pdt.id}" />
-				</p:column>
-				<p:column headerText="Designation">
-					<h:outputText value="#{pdt.designation}" />
-				</p:column>
-				<p:column headerText="Description">
-					<h:outputText value="#{pdt.description}" />
-				</p:column>
-				<p:column headerText="Price">
-					<h:outputText value="#{pdt.price}" />
-				</p:column>
-				<p:column headerText="Quantity">
-					<h:outputText value="#{pdt.quantity}" />
-				</p:column>
-							<p:column headerText="Picture">
-								<h:graphicImage value="#{pdt.img}" />
-							</p:column>
-			</p:dataTable>
-
-		</h:form>
-	</div>
+	
 </h:body>
 </h:html>
 

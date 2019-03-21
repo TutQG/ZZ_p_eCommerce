@@ -127,7 +127,21 @@
 			<version>5.1.38</version>
 		</dependency>
 
-		
+		<!-- Librairie mail -->
+
+		<!-- mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- activation -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1</version>
+		</dependency>
 
 
 	</dependencies>

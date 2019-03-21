@@ -100,7 +100,7 @@ public class CategoryManagedBean implements Serializable{
 				
 				if (catModif !=0){
 					
-					List<Category> catListe=catService.getAllCat(category),;
+					List<Category> catListe=catService.getAllCat(category);
 					
 					mySession.setAttribute("lSession", catListe);
 					

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fr.adaming.entities.Category;
-import fr.adaming.entities.Etudiant;
 
 @Repository
 public class CategoryDaoImpl implements ICategoryDao {
