@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.SessionFactory;
+import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.adaming.entities.Administrator;
@@ -33,13 +34,14 @@ public class ProductManagedBean implements Serializable {
 	private Administrator admin;
 
 	private Category cat;
-
+	private UploadedFile picture;
 	private HttpSession mySession;
 
-	private Product product;
+
+	
 
 	public ProductManagedBean() {
-		this.product = new Product();
+		this.pdt = new Product();
 	}
 
 	@Autowired
@@ -61,36 +63,46 @@ public class ProductManagedBean implements Serializable {
 	}
 
 	public Product getProduct() {
-		return product;
+		return pdt;
 	}
 
 	public void setProduct(Product product) {
-		this.product = product;
+		this.pdt = product;
 	}
-
 
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
 
-	public String addPdt() {
-		Product pdtAjout = pdtService.addPdt(product);
+	public UploadedFile getPicture() {
+		return picture;
+	}
 
+	public void setPicture(UploadedFile picture) {
+		this.picture = picture;
+	}
+
+	public String addPdt() {
 		
+		if (this.picture != null) {
+			this.pdt.setPicture(this.picture.getContents());
+		}
+
+		Product pdtAjout = pdtService.addPdt(pdt);
+
 		String messageMail;
 
 		messageMail = "Bonjour, \n Nous vous informons que nous avons ajouté un nouveau produit \n Cordialement, \n Guillaume et Arthur";
 
 		int verifMail = 0;
-		
+
 		if (pdtAjout.getId() != 0) {
-			
 
 			SendMailSSL sm = new SendMailSSL();
 			try {
 				// Vérif va servir à savoir si le mail est envoyé vu que la
 				// fonction sendmail retourne un int
-				verifMail = sm.sendMail("arthur.quillent@gmail.com", messageMail);
+				verifMail = sm.sendMail("gbonnenf@gmail.com", messageMail);
 
 			} catch (Exception e) {
 
@@ -103,14 +115,15 @@ public class ProductManagedBean implements Serializable {
 				List<Product> pdtListe = pdtService.getAllPdt(pdt);
 
 				// Mettre la liste dans la session
-				mySession.setAttribute("lSession", pdtListe);
+				mySession.setAttribute("lPdtSession", pdtListe);
 				return "homeAdmin";
 
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produit ajouté mais mail non envoyé"));
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage("Produit ajouté mais mail non envoyé"));
 				return "homeAdmin";
 			}
-			
+
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout a échoué"));
 			return "addPdt";
@@ -124,7 +137,7 @@ public class ProductManagedBean implements Serializable {
 		if (pdtModif != 0) {
 			List<Product> liste = pdtService.getAllPdt(pdt);
 
-			mySession.setAttribute("lSession", liste);
+			mySession.setAttribute("lPdtSession", liste);
 
 			return "homeAdmin";
 		} else {
@@ -141,7 +154,7 @@ public class ProductManagedBean implements Serializable {
 
 			List<Product> pdtListe = pdtService.getAllPdt(pdt);
 
-			mySession.setAttribute("lSession", pdtListe);
+			mySession.setAttribute("lPdtSession", pdtListe);
 
 			return "homeAdmin";
 		} else {

@@ -143,6 +143,29 @@
 			<version>1.1</version>
 		</dependency>
 
+		<!-- librairies images -->
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<!-- Java-PDF Mail -->
+		<!-- https://mvnrepository.com/artifact/itext/itext -->
+		<dependency>
+			<groupId>itext</groupId>
+			<artifactId>itext</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
 
 	</dependencies>
 

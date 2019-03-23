@@ -27,14 +27,14 @@ public class AdminDaoImpl implements IAdminDao {
 				Session s=sf.getCurrentSession();
 				
 				//req  hql
-				String req="FROM Administrator  as a WHERE a.mail=:pMail AND a.mdp=:pMdp";
+				String req="FROM Administrator as a WHERE a.mail=:pMail AND a.pwd=:pPwd";
 				
 				//recup le query
 				Query query=s.createQuery(req);
 				
 				//passage des params
 				query.setParameter("pMail", adIn.getMail());
-				query.setParameter("pMdp", adIn.getPwd());
+				query.setParameter("pPwd", adIn.getPwd());
 				
 				
 				return (Administrator) query.uniqueResult();

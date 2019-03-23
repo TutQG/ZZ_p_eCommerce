@@ -16,7 +16,7 @@ public class SendMailSSL {
 		// Ton mail, le mdp de ton mail, le destinataire, le sujet, et l'objet
 		int a = 0;
 		
-		Mail.send("arthur.quillent@gmailcom", "Louis10.", destinataire, "Résumé de votre commande", message);
+		Mail.send("gbonnenf@gmail.com", "Lortiawhbo/140591", destinataire, "Résumé de votre commande", message);
 		// Message et destinataire sont des variables afin d'envoyer le mail à
 		// la bonne personne pour "destinataire", et de personnaliser
 		// le message avec "message" selon la personne.

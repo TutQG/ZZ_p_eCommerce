@@ -13,11 +13,11 @@ public class AdminServiceImpl implements IAdminService {
 
 	//transformation de l'association uml en java
 		@Autowired
-		private IAdminDao amdinDao;
+		private IAdminDao adminDao;
 		
 		//setter pour l'injection dépendance
-		public void setAmdinDao(IAdminDao amdinDao) {
-			this.amdinDao = amdinDao;
+		public void setAmdinDao(IAdminDao adminDao) {
+			this.adminDao = adminDao;
 		}
 
 
@@ -25,7 +25,7 @@ public class AdminServiceImpl implements IAdminService {
 	@Override
 	public Administrator isExist(Administrator adIn) {
 		// TODO Auto-generated method stub
-		return amdinDao.isExist(adIn);
+		return adminDao.isExist(adIn);
 	}
 
 }

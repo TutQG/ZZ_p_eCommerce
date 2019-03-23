@@ -22,10 +22,10 @@
 
 		<h:form enctype="multipart/form-data">
 			<h:panelGrid columns="2">
-			Name : <h:inputText value="#{adMB.cat.name}" />
-			Description : <h:inputText value="#{adMB.cat.description}" />
-			Picture : <p:fileUpload value="#{adMB.photo}" mode="simple" skinSimple="true"/>
-				<h:commandButton value="Add" action="#{adMB.addCat}" />
+			Name : <h:inputText value="#{catMB.category.name}" />
+			Description : <h:inputText value="#{catMB.category.description}" />
+			Picture : <p:fileUpload value="#{catMB.image}" mode="simple" skinSimple="true"/>
+				<h:commandButton value="Add" action="#{catMB.addCat}" />
 			</h:panelGrid>
 		</h:form>
 

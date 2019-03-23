@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.adaming.entities.Customer;
 import fr.adaming.service.ICustoService;
@@ -20,6 +21,8 @@ public class CustoManagedBeanOLD {
 
 	private Customer custo;
 
+	private HttpSession mySession;
+	
 	// CONSTRUCTEUR VIDE
 	public CustoManagedBeanOLD() {
 		this.custo = new Customer();
@@ -39,7 +42,7 @@ public class CustoManagedBeanOLD {
 	}
 
 	// methode métier
-	public String connect() {
+	public String connectCu() {
 		Customer cuOut = cuService.isExist(custo);
 
 		if (cuOut != null) {

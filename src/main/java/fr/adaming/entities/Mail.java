@@ -2,13 +2,17 @@ package fr.adaming.entities;
 
 import java.util.Properties;
 
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 class Mail {
 
@@ -36,6 +40,31 @@ class Mail {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject(sub);
 			message.setText(msg);
+
+			MimeMessage message = new MimeMessage(session);
+
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject(sub);
+			message.setText(msg);
+
+			// Multipart
+			Multipart multipart = new MimeMultipart();
+
+			// Corps du message
+			BodyPart partieMessage = new MimeBodyPart();
+
+			// Ajouter du texte au message
+			partieMessage.setText(msg);
+			multipart.addBodyPart(partieMessage);
+
+			// Pièces jointes
+			partieMessage = new MimeBodyPart();
+			DataSource source = new FileDataSource("C:\\Users\\IN-BR-007\\FicheProduit.pdf");
+			partieMessage.setDataHandler(new DataHandler(source));
+			partieMessage.setFileName("Fiche Produit");
+			multipart.addBodyPart(partieMessage);
+			message.setContent(multipart);
+
 			// send message
 			Transport.send(message);
 			// Décommenter pour vérifier que le message est envoyé

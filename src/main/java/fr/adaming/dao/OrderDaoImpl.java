@@ -17,6 +17,9 @@ public class OrderDaoImpl implements IOrderDao {
 	@Autowired
 	private SessionFactory sf;
 
+	public void setSf(SessionFactory sf) {
+		this.sf = sf;
+	}
 	@Override
 	public List<Order> getAllOrder(Order ord) {
 		// recup le bus (session de hibernate)

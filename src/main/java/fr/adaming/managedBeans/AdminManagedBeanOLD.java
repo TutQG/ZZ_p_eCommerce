@@ -46,11 +46,12 @@ public class AdminManagedBeanOLD implements Serializable {
 
 	// CONSTRUCTEUR VIDE
 	public AdminManagedBeanOLD() {
-		super();
+		this.admin=new Administrator();
 	}
 
 	// le setter est obligatoire pour l'injection de dépendance via
 	// @ManagedProperty
+	
 	public void setAdService(IAdminService adService) {
 		this.adService = adService;
 	}

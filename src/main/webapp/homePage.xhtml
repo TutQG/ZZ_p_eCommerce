@@ -2,7 +2,8 @@
 <h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 
 	<title>Insert title here</title>
@@ -12,10 +13,28 @@
 	<ui:insert>
 		<ui:include src="/ressources/templates/navBar.xhtml"></ui:include>
 	</ui:insert>
-	
-	
-	
-	
-	
+
+	<b:row>
+		<b:column col-sm="6" col-md="4">
+			<b:thumbnail var="cat" value="#{sessionScope.lCatSession}">
+				<img data-src="#{cat.img}"
+					alt="Generic placeholder thumbnail" />
+				<f:facet name="caption">
+					<h3>Thumbnail label</h3>
+					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+						Donec id elit non mi porta gravida at eget metus. Nullam id dolor
+						id nibh ultricies vehicula ut id elit.</p>
+					<p>
+						<b:button look="primary" value="Button" />
+						<b:button value="Button" />
+					</p>
+				</f:facet>
+			</b:thumbnail>
+		</b:column>
+  ...
+</b:row>
+
+
+
 </h:body>
 </h:html>

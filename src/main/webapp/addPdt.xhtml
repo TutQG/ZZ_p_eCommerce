@@ -20,12 +20,12 @@
 
 		<h:form enctype="multipart/form-data">
 			<h:panelGrid columns="2">
-			Designation : <h:inputText value="#{adMB.pdt.designation}" />
-			Description : <h:inputText value="#{adMB.pdt.description}" />
-			Price : <h:inputText value="#{adMB.pdt.price}" />
-			Quantity : <h:inputText value="#{adMB.pdt.quantity}" />
-			Picture : <p:fileUpload value="#{adMB.picture}" mode="simple" skinSimple="true"/>
-				<h:commandButton value="Add" action="#{adMB.addPdt}" />
+			Designation : <h:inputText value="#{pdtMB.product.designation}" />
+			Description : <h:inputText value="#{pdtMB.product.description}" />
+			Price : <h:inputText value="#{pdtMB.product.price}" />
+			Quantity : <h:inputText value="#{pdtMB.product.quantity}" />
+			Picture : <p:fileUpload value="#{pdtMB.picture}" mode="simple" skinSimple="true"/>
+				<h:commandButton value="Add" action="#{pdtMB.addPdt}" />
 			</h:panelGrid>
 		</h:form>
 

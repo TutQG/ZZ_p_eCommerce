@@ -16,6 +16,10 @@ public class OLDaoImpl implements IOLDao {
 	@Autowired
 	private SessionFactory sf;
 
+	public void setSf(SessionFactory sf) {
+		this.sf = sf;
+	}
+	
 	@Override
 	public double price(OrderLine ol, Product pdt) {
 		// TODO Auto-generated method stub
