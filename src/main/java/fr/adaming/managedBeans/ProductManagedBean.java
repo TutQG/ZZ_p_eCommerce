@@ -37,9 +37,6 @@ public class ProductManagedBean implements Serializable {
 	private UploadedFile picture;
 	private HttpSession mySession;
 
-
-	
-
 	public ProductManagedBean() {
 		this.pdt = new Product();
 	}
@@ -83,7 +80,7 @@ public class ProductManagedBean implements Serializable {
 	}
 
 	public String addPdt() {
-		
+
 		if (this.picture != null) {
 			this.pdt.setPicture(this.picture.getContents());
 		}
@@ -116,12 +113,18 @@ public class ProductManagedBean implements Serializable {
 
 				// Mettre la liste dans la session
 				mySession.setAttribute("lPdtSession", pdtListe);
-				return "homeAdmin";
+				System.out.println("Produit ajouté ++++++ mail non envoyé");
+				return "pdtDisplay";
 
 			} else {
+				List<Product> pdtListe = pdtService.getAllPdt(pdt);
+
+				// Mettre la liste dans la session
+				mySession.setAttribute("lPdtSession", pdtListe);
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage("Produit ajouté mais mail non envoyé"));
-				return "homeAdmin";
+				System.out.println("Produit ajouté mais mail non envoyé");
+				return "pdtDisplay";
 			}
 
 		} else {
@@ -139,7 +142,7 @@ public class ProductManagedBean implements Serializable {
 
 			mySession.setAttribute("lPdtSession", liste);
 
-			return "homeAdmin";
+			return "pdtDisplay";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La modification a échoué"));
 			return "updatePdt";
@@ -156,7 +159,7 @@ public class ProductManagedBean implements Serializable {
 
 			mySession.setAttribute("lPdtSession", pdtListe);
 
-			return "homeAdmin";
+			return "pdtDisplay";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression a échoué"));
 			return "delPdt";

@@ -44,7 +44,7 @@ class Mail {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject(sub);
 			message.setText(msg);
-			
+
 			// Multipart
 			Multipart multipart = new MimeMultipart();
 
@@ -54,15 +54,15 @@ class Mail {
 			// Ajouter du texte au message
 			partieMessage.setText(msg);
 			multipart.addBodyPart(partieMessage);
-			
+
 			// Pièces jointes
 			partieMessage = new MimeBodyPart();
-			DataSource source = new FileDataSource("C:\\Users\\IN-BR-007\\FicheProduit.pdf");
+			DataSource source = new FileDataSource("C:\\Users\\IN-BR-011\\Documents\\FicheProduit.pdf");
 			partieMessage.setDataHandler(new DataHandler(source));
 			partieMessage.setFileName("Fiche Produit \n \n Test envoie PDF en PJ de mail. Guillaume-Arthur");
 			multipart.addBodyPart(partieMessage);
 			message.setContent(multipart);
-			
+
 			// send message
 			Transport.send(message);
 			// Décommenter pour vérifier que le message est envoyé
