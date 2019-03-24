@@ -1,0 +1,5 @@
+Pb vus:
+- mise a jour du Pdt display en différé
+- envoie de pdf en PJ de mail.
+- identifiants customers
+-après ajout/del/uodate de pdt, pas de renvoie vers la page pdtDisplay alors que dans managed bean c'est programmé de la sorte
