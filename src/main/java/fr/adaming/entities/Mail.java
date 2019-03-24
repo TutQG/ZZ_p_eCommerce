@@ -2,6 +2,9 @@ package fr.adaming.entities;
 
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -29,7 +32,7 @@ class Mail {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
 		// get Session
-		javax.mail.Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(from, password);
 			}
@@ -37,16 +40,11 @@ class Mail {
 		// Ici, on crée ce qu'il y aura dans le message, pas besoin de modifier
 		try {
 			MimeMessage message = new MimeMessage(session);
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			message.setSubject(sub);
-			message.setText(msg);
-
-			MimeMessage message = new MimeMessage(session);
 
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject(sub);
 			message.setText(msg);
-
+			
 			// Multipart
 			Multipart multipart = new MimeMultipart();
 
@@ -56,19 +54,19 @@ class Mail {
 			// Ajouter du texte au message
 			partieMessage.setText(msg);
 			multipart.addBodyPart(partieMessage);
-
+			
 			// Pièces jointes
 			partieMessage = new MimeBodyPart();
 			DataSource source = new FileDataSource("C:\\Users\\IN-BR-007\\FicheProduit.pdf");
 			partieMessage.setDataHandler(new DataHandler(source));
-			partieMessage.setFileName("Fiche Produit");
+			partieMessage.setFileName("Fiche Produit \n \n Test envoie PDF en PJ de mail. Guillaume-Arthur");
 			multipart.addBodyPart(partieMessage);
 			message.setContent(multipart);
-
+			
 			// send message
 			Transport.send(message);
 			// Décommenter pour vérifier que le message est envoyé
-			System.out.println("message sent successfully");
+			System.out.println("Message envoyé");
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
